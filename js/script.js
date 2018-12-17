@@ -1,35 +1,26 @@
-var resultText = document.getElementById('counterText').value;
 var count = 0;
-resultText = count;
-
-
-document.addEventListener("DOMContentLoaded", function(){
-console.log("Document Loaded");
-
-
-	
-	//disable the default submition
-	var form = document.getElementById('counterForm')
-	form.addEventListener("submit", function(e){
-		e.preventDefault();
-
-		var plus = document.getElementById("plus");
-		var minus = document.getElementById("minus");
-
-	});
-})
-
 
 function addResult(){
 	var inputBoxValue = document.getElementById('inputBox').value;
-	Number(resultText) + Number(inputBoxValue);
-	console.log(inputBoxValue);
-	
+	count = Number(count) + Number(inputBoxValue);
+  updateDisplay();
 }
 
 function subtractResult(){
 	var inputBoxValue = document.getElementById('inputBox').value;
-	resultText.innerHTML = Number(inputBoxValue) - Number(inputBoxValue);
-	console.log(inputBoxValue);
+	count = Number(count) - Number(inputBoxValue);
+  updateDisplay();
+}
 
+function updateDisplay(){
+  // Set the text of the result to display in the counterText
+  document.getElementById('counterText').textContent = count;
+
+  // BONUS: Updating the color
+  if(count < 0){
+    document.getElementById('counterText').style.color = "red";
+  }
+  else {
+    document.getElementById('counterText').style.color = "black";
+  }
 }
